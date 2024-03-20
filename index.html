@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="stylesheet" type="text/css" media="screen" href="/dotnet-gcm/assets/css/style.css?v=03067470e1a44cd304986ef9efa0491eaf2e1079">
+
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>dotnet-gcm | A dotnet global tool to interface with the Git Credentials Manager Core</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="dotnet-gcm" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A dotnet global tool to interface with the Git Credentials Manager Core" />
+<meta property="og:description" content="A dotnet global tool to interface with the Git Credentials Manager Core" />
+<meta property="og:site_name" content="dotnet-gcm" />
+<script type="application/ld+json">
+{"@type":"WebSite","url":"/dotnet-gcm/","description":"A dotnet global tool to interface with the Git Credentials Manager Core","headline":"dotnet-gcm","name":"dotnet-gcm","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/devlooped/dotnet-gcm">View on GitHub</a>
+
+          <h1 id="project_title">dotnet-gcm</h1>
+          <h2 id="project_tagline">A dotnet global tool to interface with the Git Credentials Manager Core</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1 id="-dotnet-gcm"><img src="https://raw.githubusercontent.com/devlooped/dotnet-gcm/main/icon.png" alt="Icon" /> dotnet-gcm</h1>
+
+<p><a href="https://www.nuget.org/packages/dotnet-gcm"><img src="https://img.shields.io/nuget/v/dotnet-gcm.svg?color=royalblue" alt="Version" /></a> <a href="https://www.nuget.org/packages/dotnet-gcm"><img src="https://img.shields.io/nuget/dt/dotnet-gcm.svg?color=green" alt="Downloads" /></a> <a href="https://github.com//devlooped/dotnet-gcm/blob/main/license.txt"><img src="https://img.shields.io/github/license/devlooped/dotnet-gcm.svg?color=blue" alt="License" /></a> <a href="https://github.com/devlooped/dotnet-gcm/actions"><img src="https://github.com/devlooped/dotnet-gcm/workflows/build/badge.svg?branch=main" alt="Build" /></a></p>
+
+<!-- #content -->
+<p>A dotnet global tool for managing Git credentials using the Microsoft Git Credentials Manager Core.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Usage:
+  gcm [options] [command]
+
+Options:
+  --version         Show version information
+  -?, -h, --help    Show help and usage information
+
+Commands:
+  get &lt;url&gt;     Get a stored credential.
+  set &lt;url&gt;     Store a credential.
+  delete &lt;url&gt;  Delete a stored credential.
+</code></pre></div></div>
+
+<p>Note that all commands can operate on a simplified syntax using a full URI, which can include <code class="language-plaintext highlighter-rouge">username:password</code> 
+(as in the <code class="language-plaintext highlighter-rouge">set</code> command). That argument is converted to a <code class="language-plaintext highlighter-rouge">Uri</code> and the existing options are used as the default 
+value for required options that aren’t provided. You can alternatively provide the individual options.</p>
+
+<p><strong>get</strong>: Get a stored credential.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Usage:
+  gcm [options] get [&lt;url&gt;]
+
+Arguments:
+  &lt;url&gt;  A URL used to populate options from a single value: [protocol]://[host]/[path?]
+
+Options:
+  -p, --protocol &lt;protocol&gt; (REQUIRED)  The protocol over which the credential will be used (e.g., https).
+  -h, --host &lt;host&gt; (REQUIRED)          The remote hostname for a network credential. This can include the port number.
+  --path &lt;path&gt;                         The path with which the credential will be used. E.g., for accessing a remote
+                                        https repository, this will be the repository's path on the server.
+  -?, -h, --help                        Show help and usage information
+</code></pre></div></div>
+
+<p><strong>set</strong>: Store a credential.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Usage:
+  gcm [options] set [&lt;url&gt;]
+
+Arguments:
+  &lt;url&gt;  A URL used to populate options from a single value: [protocol]://[user]:[password]@[host]/[path?]
+
+Options:
+  -s, --protocol &lt;protocol&gt; (REQUIRED)  The protocol over which the credential will be used (e.g., https).
+  -h, --host &lt;host&gt; (REQUIRED)          The remote hostname for a network credential. This can include the port number.
+  -u, --username &lt;username&gt; (REQUIRED)  The credential's username.
+  -p, --password &lt;password&gt; (REQUIRED)  The credential's password.
+  --path &lt;path&gt;                         The path with which the credential will be used. E.g., for accessing a remote https repository, this
+                                        will be the repository's path on the server.
+  -?, -h, --help                        Show help and usage information
+</code></pre></div></div>
+
+<p><strong>delete</strong>: Delete a stored credential.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Usage:
+  gcm [options] delete [&lt;url&gt;]
+
+Arguments:
+  &lt;url&gt;  A URL used to populate options from a single value: [protocol]://[host]/[path?]
+
+Options:
+  -p, --protocol &lt;protocol&gt; (REQUIRED)  The protocol over which the credential will be used (e.g., https).
+  -h, --host &lt;host&gt; (REQUIRED)          The remote hostname for a network credential. This can include the port number.
+  --path &lt;path&gt;                         The path with which the credential will be used. E.g., for accessing a remote https repository, this
+                                        will be the repository's path on the server.
+  -?, -h, --help                        Show help and usage information
+</code></pre></div></div>
+
+<!-- include https://github.com/devlooped/sponsors/raw/main/footer.md -->
+<h1 id="sponsors">Sponsors</h1>
+
+<!-- sponsors.md -->
+<p><a href="https://github.com/clarius"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/clarius.png" alt="Clarius Org" title="Clarius Org" /></a>
+<a href="https://github.com/MelbourneDeveloper"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/MelbourneDeveloper.png" alt="Christian Findlay" title="Christian Findlay" /></a>
+<a href="https://github.com/augustoproiete"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/augustoproiete.png" alt="C. Augusto Proiete" title="C. Augusto Proiete" /></a>
+<a href="https://github.com/KirillOsenkov"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/KirillOsenkov.png" alt="Kirill Osenkov" title="Kirill Osenkov" /></a>
+<a href="https://github.com/MFB-Technologies-Inc"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/MFB-Technologies-Inc.png" alt="MFB Technologies, Inc." title="MFB Technologies, Inc." /></a>
+<a href="https://github.com/sandrock"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/sandrock.png" alt="SandRock" title="SandRock" /></a>
+<a href="https://github.com/eeseewy"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/eeseewy.png" alt="Eric C" title="Eric C" /></a>
+<a href="https://github.com/agocke"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/agocke.png" alt="Andy Gocke" title="Andy Gocke" /></a></p>
+
+<!-- sponsors.md -->
+
+<p><a href="https://github.com/sponsors/devlooped"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/sponsor.png" alt="Sponsor this project" title="Sponsor this project" /></a>
+ </p>
+
+<p><a href="https://github.com/sponsors">Learn more about GitHub Sponsors</a></p>
+
+<!-- https://github.com/devlooped/sponsors/raw/main/footer.md -->
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">dotnet-gcm maintained by <a href="https://github.com/devlooped">devlooped</a></p>
+        
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>
