@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="stylesheet" type="text/css" media="screen" href="/dotnet-gcm/assets/css/style.css?v=66da93f1b804b1238d1367dcd39aee036b393fc6">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>dotnet-gcm | A dotnet global tool to interface with the Git Credentials Manager Core</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="dotnet-gcm" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A dotnet global tool to interface with the Git Credentials Manager Core" />
+<meta property="og:description" content="A dotnet global tool to interface with the Git Credentials Manager Core" />
+<meta property="og:site_name" content="dotnet-gcm" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="dotnet-gcm" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"A dotnet global tool to interface with the Git Credentials Manager Core","headline":"dotnet-gcm","name":"dotnet-gcm","url":"/dotnet-gcm/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/dotnet-gcm/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <a id="forkme_banner" href="https://github.com/devlooped/dotnet-gcm">View on GitHub</a>
+          
+
+          <h1 id="project_title">dotnet-gcm</h1>
+          <h2 id="project_tagline">A dotnet global tool to interface with the Git Credentials Manager Core</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1 id="-dotnet-gcm"><img src="https://raw.githubusercontent.com/devlooped/dotnet-gcm/main/icon.png" alt="Icon" /> dotnet-gcm</h1>
+
+<p><a href="https://www.nuget.org/packages/dotnet-gcm"><img src="https://img.shields.io/nuget/v/dotnet-gcm.svg?color=royalblue" alt="Version" /></a> <a href="https://www.nuget.org/packages/dotnet-gcm"><img src="https://img.shields.io/nuget/dt/dotnet-gcm.svg?color=green" alt="Downloads" /></a> <a href="https://github.com//devlooped/dotnet-gcm/blob/main/license.txt"><img src="https://img.shields.io/github/license/devlooped/dotnet-gcm.svg?color=blue" alt="License" /></a> <a href="https://github.com/devlooped/dotnet-gcm/actions"><img src="https://github.com/devlooped/dotnet-gcm/workflows/build/badge.svg?branch=main" alt="Build" /></a></p>
+
+<!-- #content -->
+<p>A dotnet global tool for managing Git credentials using the cross-platform Git Credential Manager (GCM) 
+for Windows, macOS and Linux, with support for Azure DevOps, Bitbucket, GitHub, and GitLab.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>USAGE:
+    dotnet gcm [OPTIONS] &lt;COMMAND&gt;
+
+OPTIONS:
+    -h, --help    Prints help information
+
+COMMANDS:
+    get       Get a stored credential
+    delete    Delete a stored credential
+    set       Store a credential
+</code></pre></div></div>
+
+<p>Note that all commands can operate on a simplified syntax using a full URI, which can include <code class="language-plaintext highlighter-rouge">username:password</code> 
+(as in the <code class="language-plaintext highlighter-rouge">set</code> command). That argument is converted to a <code class="language-plaintext highlighter-rouge">Uri</code> and the existing options are used as the default 
+value for required options that aren’t provided. You can alternatively provide the individual options.</p>
+
+<h3 id="dotnet-gcm-get">dotnet gcm get</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DESCRIPTION:
+Get a stored credential.
+
+USAGE:
+    dotnet gcm get [URL] [OPTIONS]
+
+ARGUMENTS:
+    [URL]    A URL used to populate options from a single value: [protocol]://[user]:[password]@[host]/[path?]
+
+OPTIONS:
+    -h, --help               Prints help information
+    -s, --scheme &lt;SCHEME&gt;    The protocol over which the credential will be used (e.g., https)
+    -h, --host &lt;HOST&gt;        The remote hostname for a network credential. This can include the port number
+        --path &lt;PATH&gt;        The path with which the credential will be used. E.g., for accessing a remote https repository, this will be the repository's
+                             path on the server
+</code></pre></div></div>
+
+<h3 id="dotnet-gcm-set">dotnet gcm set</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DESCRIPTION:
+Store a credential.
+
+USAGE:
+    dotnet gcm set [URL] [OPTIONS]
+
+ARGUMENTS:
+    [URL]    A URL used to populate options from a single value: [protocol]://[user]:[password]@[host]/[path?]
+
+OPTIONS:
+    -h, --help                   Prints help information
+    -s, --scheme &lt;SCHEME&gt;        The protocol over which the credential will be used (e.g., https)
+    -h, --host &lt;HOST&gt;            The remote hostname for a network credential. This can include the port number
+        --path &lt;PATH&gt;            The path with which the credential will be used. E.g., for accessing a remote https repository, this will be the
+                                 repository's path on the server
+    -u, --username &lt;USERNAME&gt;    The credential's username
+    -p, --password &lt;PASSWORD&gt;    The credential's password
+</code></pre></div></div>
+
+<h3 id="dotnet-gcm-delete">dotnet gcm delete</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DESCRIPTION:
+Delete a stored credential.
+
+USAGE:
+    dotnet gcm delete [URL] [OPTIONS]
+
+ARGUMENTS:
+    [URL]    A URL used to populate options from a single value: [protocol]://[user]:[password]@[host]/[path?]
+
+OPTIONS:
+    -h, --help               Prints help information
+    -s, --scheme &lt;SCHEME&gt;    The protocol over which the credential will be used (e.g., https)
+    -h, --host &lt;HOST&gt;        The remote hostname for a network credential. This can include the port number
+        --path &lt;PATH&gt;        The path with which the credential will be used. E.g., for accessing a remote https repository, this will be the repository's
+                             path on the server
+</code></pre></div></div>
+
+<!-- #content -->
+<!-- include https://github.com/devlooped/sponsors/raw/main/footer.md -->
+<h1 id="sponsors">Sponsors</h1>
+
+<!-- sponsors.md -->
+<p><a href="https://github.com/clarius"><img src="https://avatars.githubusercontent.com/u/71888636?v=4&amp;s=39" alt="Clarius Org" title="Clarius Org" /></a>
+<a href="https://github.com/MFB-Technologies-Inc"><img src="https://avatars.githubusercontent.com/u/87181630?v=4&amp;s=39" alt="MFB Technologies, Inc." title="MFB Technologies, Inc." /></a>
+<a href="https://github.com/sandrock"><img src="https://avatars.githubusercontent.com/u/321868?u=99e50a714276c43ae820632f1da88cb71632ec97&amp;v=4&amp;s=39" alt="SandRock" title="SandRock" /></a>
+<a href="https://github.com/drivenet"><img src="https://avatars.githubusercontent.com/u/15047123?v=4&amp;s=39" alt="DRIVE.NET, Inc." title="DRIVE.NET, Inc." /></a>
+<a href="https://github.com/Keflon"><img src="https://avatars.githubusercontent.com/u/16598898?u=64416b80caf7092a885f60bb31612270bffc9598&amp;v=4&amp;s=39" alt="Keith Pickford" title="Keith Pickford" /></a>
+<a href="https://github.com/tbolon"><img src="https://avatars.githubusercontent.com/u/127185?u=7f50babfc888675e37feb80851a4e9708f573386&amp;v=4&amp;s=39" alt="Thomas Bolon" title="Thomas Bolon" /></a>
+<a href="https://github.com/kfrancis"><img src="https://avatars.githubusercontent.com/u/67574?u=3991fb983e1c399edf39aebc00a9f9cd425703bd&amp;v=4&amp;s=39" alt="Kori Francis" title="Kori Francis" /></a>
+<a href="https://github.com/rbnswartz"><img src="https://avatars.githubusercontent.com/u/724704?u=2076fe336f9f6ad678009f1595cbea434b0c5a41&amp;v=4&amp;s=39" alt="Reuben Swartz" title="Reuben Swartz" /></a>
+<a href="https://github.com/jfoshee"><img src="https://avatars.githubusercontent.com/u/480334?v=4&amp;s=39" alt="Jacob Foshee" title="Jacob Foshee" /></a>
+<a href="https://github.com/eajhnsn1"><img src="https://avatars.githubusercontent.com/u/33566379?u=bf62e2b46435a267fa246a64537870fd2449410f&amp;v=4&amp;s=39" alt="" title="&quot;)](https://github.com/Mrxx99)
+[![Eric Johnson](https://avatars.githubusercontent.com/u/26369281?u=41b560c2bc493149b32d384b960e0948c78767ab&amp;v=4&amp;s=39 &quot;Eric Johnson" /></a>
+<a href="https://github.com/Jonathan-Hickey"><img src="https://avatars.githubusercontent.com/u/5510103?u=98dcfbef3f32de629d30f1f418a095bf09e14891&amp;v=4&amp;s=39" alt="Jonathan " title="Jonathan " /></a>
+<a href="https://github.com/KenBonny"><img src="https://avatars.githubusercontent.com/u/6417376?u=569af445b6f387917029ffb5129e9cf9f6f68421&amp;v=4&amp;s=39" alt="Ken Bonny" title="Ken Bonny" /></a>
+<a href="https://github.com/SimonCropp"><img src="https://avatars.githubusercontent.com/u/122666?v=4&amp;s=39" alt="Simon Cropp" title="Simon Cropp" /></a>
+<a href="https://github.com/agileworks-eu"><img src="https://avatars.githubusercontent.com/u/5989304?v=4&amp;s=39" alt="agileworks-eu" title="agileworks-eu" /></a>
+<a href="https://github.com/arsdragonfly"><img src="https://avatars.githubusercontent.com/u/4067473?v=4&amp;s=39" alt="Zheyu Shen" title="Zheyu Shen" /></a>
+<a href="https://github.com/vezel-dev"><img src="https://avatars.githubusercontent.com/u/87844133?v=4&amp;s=39" alt="Vezel" title="Vezel" /></a>
+<a href="https://github.com/ChilliCream"><img src="https://avatars.githubusercontent.com/u/16239022?v=4&amp;s=39" alt="ChilliCream" title="ChilliCream" /></a>
+<a href="https://github.com/4OTC"><img src="https://avatars.githubusercontent.com/u/68428092?v=4&amp;s=39" alt="4OTC" title="4OTC" /></a>
+<a href="https://github.com/DominicSchell"><img src="https://avatars.githubusercontent.com/u/66068846?u=0a5c5e2e7d90f15ea657bc660f175605935c5bea&amp;v=4&amp;s=39" alt="domischell" title="domischell" /></a>
+<a href="https://github.com/adalon"><img src="https://avatars.githubusercontent.com/u/2027083?u=129cf516d99f5cb2fd0f4a0787a069f3446b7522&amp;v=4&amp;s=39" alt="Adrian Alonso" title="Adrian Alonso" /></a>
+<a href="https://github.com/torutek"><img src="https://avatars.githubusercontent.com/u/33917059?v=4&amp;s=39" alt="torutek" title="torutek" /></a>
+<a href="https://github.com/mccaffers"><img src="https://avatars.githubusercontent.com/u/16667079?u=c0daa64bb5c1b572130e05ae2b6f609ecc912d4d&amp;v=4&amp;s=39" alt="Ryan McCaffery" title="Ryan McCaffery" /></a>
+<a href="https://github.com/SeikaLogiciel"><img src="https://avatars.githubusercontent.com/u/2564602?v=4&amp;s=39" alt="Seika Logiciel" title="Seika Logiciel" /></a>
+<a href="https://github.com/wizardness"><img src="https://avatars.githubusercontent.com/devlooped-user?s=39" alt="Andrew Grant" title="Andrew Grant" /></a>
+<a href="https://github.com/eska-gmbh"><img src="https://avatars.githubusercontent.com/devlooped-team?s=39" alt="eska-gmbh" title="eska-gmbh" /></a>
+<a href="https://github.com/geodata-no"><img src="https://avatars.githubusercontent.com/u/5946299?v=4&amp;s=39" alt="Geodata AS" title="Geodata AS" /></a></p>
+
+<!-- sponsors.md -->
+<p><a href="https://github.com/sponsors/devlooped"><img src="https://avatars.githubusercontent.com/devlooped-sponsor?s=118" alt="Sponsor this project" title="Sponsor this project" /></a></p>
+
+<p><a href="https://github.com/sponsors">Learn more about GitHub Sponsors</a></p>
+
+<!-- https://github.com/devlooped/sponsors/raw/main/footer.md -->
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">dotnet-gcm maintained by <a href="https://github.com/devlooped">devlooped</a></p>
+        
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+</html>
